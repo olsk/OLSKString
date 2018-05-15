@@ -1,5 +1,6 @@
 {
   "name": "OLSKString",
   "version": "0.0.0",
-  "private": true
+  "private": true,
+  "main": "main.js",
 }
