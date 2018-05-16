@@ -4,11 +4,11 @@
  * MIT Licensed
  */
 
-//_ ROCOStringWithFormat
+//_ OLSKStringWithFormat
 
-exports.ROCOStringWithFormat = function(inputData) {
+exports.OLSKStringWithFormat = function(inputData) {
 	if (typeof inputData !== 'string') {
-		throw new Error('ROCOErrorInputInvalid');
+		throw new Error('OLSKErrorInputInvalid');
 	}
 
 	var substitutions = Object.values(arguments).slice(1);
@@ -23,16 +23,16 @@ exports.ROCOStringWithFormat = function(inputData) {
 		formattedString = formattedString.replace(e, substitutions[i]);
 	});
 
-	exports._ROCOStringAllMatchesWithRegexAndString(/%\$(\d*)@/g, inputData).forEach(function(e) {
+	exports._OLSKStringAllMatchesWithRegexAndString(/%\$(\d*)@/g, inputData).forEach(function(e) {
 		formattedString = formattedString.replace(e[0], substitutions[e[1] - 1]);
 	});
 
 	return formattedString;
 };
 
-//_ _ROCOStringAllMatchesWithRegexAndString
+//_ _OLSKStringAllMatchesWithRegexAndString
 
-exports._ROCOStringAllMatchesWithRegexAndString = function(regex, string) {
+exports._OLSKStringAllMatchesWithRegexAndString = function(regex, string) {
 	var matches = [];
 
 	var match = regex.exec(string);
