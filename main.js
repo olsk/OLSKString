@@ -11,47 +11,47 @@
 }(this, (function(exports) {
 	'use strict';
 
-//_ OLSKStringWithFormat
+	//_ OLSKStringWithFormat
 
-exports.OLSKStringWithFormat = function(inputData) {
-	if (typeof inputData !== 'string') {
-		throw new Error('OLSKErrorInputInvalid');
-	}
+	exports.OLSKStringWithFormat = function(inputData) {
+		if (typeof inputData !== 'string') {
+			throw new Error('OLSKErrorInputInvalid');
+		}
 
-	var substitutions = Object.values(arguments).slice(1);
+		var substitutions = Object.values(arguments).slice(1);
 
-	if (!substitutions.length) {
-		return inputData;
-	}
+		if (!substitutions.length) {
+			return inputData;
+		}
 
-	var formattedString = inputData;
+		var formattedString = inputData;
 
-	(inputData.match(/%@/g) || []).forEach(function(e, i) {
-		formattedString = formattedString.replace(e, substitutions[i]);
-	});
+		(inputData.match(/%@/g) || []).forEach(function(e, i) {
+			formattedString = formattedString.replace(e, substitutions[i]);
+		});
 
-	exports._OLSKStringAllMatchesWithRegexAndString(/%\$(\d*)@/g, inputData).forEach(function(e) {
-		formattedString = formattedString.replace(e[0], substitutions[e[1] - 1]);
-	});
+		exports._OLSKStringAllMatchesWithRegexAndString(/%\$(\d*)@/g, inputData).forEach(function(e) {
+			formattedString = formattedString.replace(e[0], substitutions[e[1] - 1]);
+		});
 
-	return formattedString;
-};
+		return formattedString;
+	};
 
-//_ _OLSKStringAllMatchesWithRegexAndString
+	//_ _OLSKStringAllMatchesWithRegexAndString
 
-exports._OLSKStringAllMatchesWithRegexAndString = function(regex, string) {
-	var matches = [];
+	exports._OLSKStringAllMatchesWithRegexAndString = function(regex, string) {
+		var matches = [];
 
-	var match = regex.exec(string);
+		var match = regex.exec(string);
 
-	while (match != null) {
-		matches.push(match);
+		while (match != null) {
+			matches.push(match);
 
-		match = regex.exec(string);
-	}
+			match = regex.exec(string);
+		}
 
-	return matches;
-};
+		return matches;
+	};
 
 
 	Object.defineProperty(exports, '__esModule', {
