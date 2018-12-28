@@ -4,6 +4,13 @@
  * MIT Licensed
  */
 
+(function(global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+		typeof define === 'function' && define.amd ? define(['exports'], factory) :
+			(factory((global.OLSKString = global.OLSKString || {})));
+}(this, (function(exports) {
+	'use strict';
+
 //_ OLSKStringWithFormat
 
 exports.OLSKStringWithFormat = function(inputData) {
@@ -45,3 +52,10 @@ exports._OLSKStringAllMatchesWithRegexAndString = function(regex, string) {
 
 	return matches;
 };
+
+
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+
+})));
