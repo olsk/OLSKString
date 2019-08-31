@@ -41,3 +41,35 @@ describe('OLSKStringWithFormat', function testOLSKStringWithFormat() {
 	});
 
 });
+
+describe('OLSKStringReplaceTokens', function testOLSKStringReplaceTokens() {
+
+	it('throws error if param1 not string', function() {
+		assert.throws(function() {
+			stringLibrary.OLSKStringReplaceTokens(null, {});
+		}, /OLSKErrorInputInvalid/);
+	});
+
+	it('throws error if param2 not object', function() {
+		assert.throws(function() {
+			stringLibrary.OLSKStringReplaceTokens('', null);
+		}, /OLSKErrorInputInvalid/);
+	});
+
+	it('returns inputString', function() {
+		assert.strictEqual(stringLibrary.OLSKStringReplaceTokens('', {}), '');
+	});
+
+	it('replaces token single', function() {
+		assert.strictEqual(stringLibrary.OLSKStringReplaceTokens('alfa', {
+			alfa: 'bravo',
+		}), 'bravo');
+	});
+
+	it('replaces token multiple', function() {
+		assert.strictEqual(stringLibrary.OLSKStringReplaceTokens('alfa alfa', {
+			alfa: 'bravo',
+		}), 'bravo bravo');
+	});
+
+});

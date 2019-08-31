@@ -53,6 +53,21 @@
 		return matches;
 	};
 
+	//_ OLSKStringReplaceTokens
+
+	exports.OLSKStringReplaceTokens = function(param1, param2) {
+		if (typeof param1 !== 'string') {
+			throw new Error('OLSKErrorInputInvalid');
+		}
+
+		if (typeof param2 !== 'object' || param2 === null) {
+			throw new Error('OLSKErrorInputInvalid');
+		}
+
+		return Object.entries(param2).reduce(function (coll, item) {
+			return coll.replace(new RegExp(item.shift(), 'g'), item.pop());
+		}, param1);
+	};
 
 	Object.defineProperty(exports, '__esModule', {
 		value: true
