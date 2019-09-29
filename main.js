@@ -69,6 +69,32 @@
 		}, param1);
 	};
 
+	//_ OLSKStringPatch
+
+	exports.OLSKStringPatch = function(param1, param2, param3) {
+		if (typeof param1 !== 'string') {
+			throw new Error('OLSKErrorInputInvalid');
+		}
+
+		if (typeof param2 !== 'string') {
+			throw new Error('OLSKErrorInputInvalid');
+		}
+
+		if (typeof param3 !== 'string') {
+			throw new Error('OLSKErrorInputInvalid');
+		}
+
+		if (!param1.includes(param2)) {
+			throw new Error('OLSKErrorInputInvalid');
+		}
+
+		if (param3.includes(param2)) {
+			throw new Error('OLSKErrorInputInvalid');
+		}
+
+		return param1.split(param2).join(param3);
+	};
+
 	Object.defineProperty(exports, '__esModule', {
 		value: true
 	});

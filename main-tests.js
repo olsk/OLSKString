@@ -73,3 +73,55 @@ describe('OLSKStringReplaceTokens', function testOLSKStringReplaceTokens() {
 	});
 
 });
+
+describe('OLSKStringPatch', function testOLSKStringPatch() {
+
+	it('throws error if param1 not string', function() {
+		assert.throws(function() {
+			stringLibrary.OLSKStringPatch(null, '', '');
+		}, /OLSKErrorInputInvalid/);
+	});
+
+	it('throws error if param2 not string', function() {
+		assert.throws(function() {
+			stringLibrary.OLSKStringPatch('', null, '');
+		}, /OLSKErrorInputInvalid/);
+	});
+
+	it('throws error if param3 not string', function() {
+		assert.throws(function() {
+			stringLibrary.OLSKStringPatch('', '', null);
+		}, /OLSKErrorInputInvalid/);
+	});
+
+	it('throws error if param2 not in param1', function() {
+		assert.throws(function() {
+			stringLibrary.OLSKStringPatch('', 'alfa', '');
+		}, /OLSKErrorInputInvalid/);
+	});
+
+	it('throws error if param2 in param3', function() {
+		assert.throws(function() {
+			stringLibrary.OLSKStringPatch('alfa', 'alfa', 'alfa bravo');
+		}, /OLSKErrorInputInvalid/);
+	});
+
+	it.skip('throws error if replaces more than once', function() {
+		assert.throws(function() {
+			stringLibrary.OLSKStringPatch('alfa', 'alfa', '// alfa');
+		}, /OLSKErrorInputInvalid/);
+	});
+
+	it('returns string', function() {
+		assert.strictEqual(stringLibrary.OLSKStringPatch('alfa', 'alfa', 'bravo'), 'bravo');
+	});
+
+	it('replaces single', function() {
+		assert.strictEqual(stringLibrary.OLSKStringPatch('alfa bravo', 'bravo', 'charlie'), 'alfa charlie');
+	});
+
+	it('replaces multiple', function() {
+		assert.strictEqual(stringLibrary.OLSKStringPatch('alfa bravo bravo', 'bravo', 'charlie'), 'alfa charlie charlie');
+	});
+
+});
