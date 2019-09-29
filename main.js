@@ -15,7 +15,7 @@
 
 	exports.OLSKStringWithFormat = function(inputData) {
 		if (typeof inputData !== 'string') {
-			throw new Error('OLSKErrorInputInvalid');
+			throw new Error('OLSKErrorInputNotValid');
 		}
 
 		var substitutions = Object.values(arguments).slice(1);
@@ -57,11 +57,11 @@
 
 	exports.OLSKStringReplaceTokens = function(param1, param2) {
 		if (typeof param1 !== 'string') {
-			throw new Error('OLSKErrorInputInvalid');
+			throw new Error('OLSKErrorInputNotValid');
 		}
 
 		if (typeof param2 !== 'object' || param2 === null) {
-			throw new Error('OLSKErrorInputInvalid');
+			throw new Error('OLSKErrorInputNotValid');
 		}
 
 		return Object.entries(param2).reduce(function (coll, item) {
@@ -73,23 +73,23 @@
 
 	exports.OLSKStringPatch = function(param1, param2, param3) {
 		if (typeof param1 !== 'string') {
-			throw new Error('OLSKErrorInputInvalid');
+			throw new Error('OLSKErrorInputNotValid');
 		}
 
 		if (typeof param2 !== 'string') {
-			throw new Error('OLSKErrorInputInvalid');
+			throw new Error('OLSKErrorInputNotValid');
 		}
 
 		if (typeof param3 !== 'string') {
-			throw new Error('OLSKErrorInputInvalid');
+			throw new Error('OLSKErrorInputNotValid');
 		}
 
 		if (!param1.includes(param2)) {
-			throw new Error('OLSKErrorInputInvalid');
+			throw new Error('OLSKErrorInputNotValid');
 		}
 
 		if (param3.includes(param2)) {
-			throw new Error('OLSKErrorInputInvalid');
+			throw new Error('OLSKErrorInputNotValid');
 		}
 
 		return param1.split(param2).join(param3);

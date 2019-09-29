@@ -13,7 +13,7 @@ describe('OLSKStringWithFormat', function testOLSKStringWithFormat() {
 	it('throws error if not string', function() {
 		assert.throws(function() {
 			stringLibrary.OLSKStringWithFormat(null);
-		}, /OLSKErrorInputInvalid/);
+		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('returns inputString if param1 without formatIdentifier', function() {
@@ -47,13 +47,13 @@ describe('OLSKStringReplaceTokens', function testOLSKStringReplaceTokens() {
 	it('throws error if param1 not string', function() {
 		assert.throws(function() {
 			stringLibrary.OLSKStringReplaceTokens(null, {});
-		}, /OLSKErrorInputInvalid/);
+		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 not object', function() {
 		assert.throws(function() {
 			stringLibrary.OLSKStringReplaceTokens('', null);
-		}, /OLSKErrorInputInvalid/);
+		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('returns inputString', function() {
@@ -79,37 +79,37 @@ describe('OLSKStringPatch', function testOLSKStringPatch() {
 	it('throws error if param1 not string', function() {
 		assert.throws(function() {
 			stringLibrary.OLSKStringPatch(null, '', '');
-		}, /OLSKErrorInputInvalid/);
+		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 not string', function() {
 		assert.throws(function() {
 			stringLibrary.OLSKStringPatch('', null, '');
-		}, /OLSKErrorInputInvalid/);
+		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param3 not string', function() {
 		assert.throws(function() {
 			stringLibrary.OLSKStringPatch('', '', null);
-		}, /OLSKErrorInputInvalid/);
+		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 not in param1', function() {
 		assert.throws(function() {
 			stringLibrary.OLSKStringPatch('', 'alfa', '');
-		}, /OLSKErrorInputInvalid/);
+		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 in param3', function() {
 		assert.throws(function() {
 			stringLibrary.OLSKStringPatch('alfa', 'alfa', 'alfa bravo');
-		}, /OLSKErrorInputInvalid/);
+		}, /OLSKErrorInputNotValid/);
 	});
 
 	it.skip('throws error if replaces more than once', function() {
 		assert.throws(function() {
 			stringLibrary.OLSKStringPatch('alfa', 'alfa', '// alfa');
-		}, /OLSKErrorInputInvalid/);
+		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('returns string', function() {
