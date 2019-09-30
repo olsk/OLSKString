@@ -94,11 +94,11 @@ describe('OLSKStringPatch', function testOLSKStringPatch() {
 		}, /OLSKErrorInputNotValid/);
 	});
 
-	it('throws error if param2 not in param1', function() {
-		assert.throws(function() {
-			stringLibrary.OLSKStringPatch('', 'alfa', '');
-		}, /OLSKErrorInputNotValid/);
-	});
+	// it('throws error if param2 not in param1', function() {
+	// 	assert.throws(function() {
+	// 		stringLibrary.OLSKStringPatch('', 'alfa', '');
+	// 	}, /OLSKErrorInputNotValid/);
+	// });
 
 	it('throws error if param2 in param3', function() {
 		assert.throws(function() {
