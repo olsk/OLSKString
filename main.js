@@ -84,9 +84,9 @@
 			throw new Error('OLSKErrorInputNotValid');
 		}
 
-		// if (!param1.includes(param2)) {
-		// 	throw new Error('OLSKErrorInputNotValid');
-		// }
+		if (!param1.includes(param2) && !param1.includes(param3)) {
+			throw new Error('OLSKErrorInputNotValid');
+		}
 
 		if (param3.includes(param2)) {
 			throw new Error('OLSKErrorInputNotValid');

@@ -94,15 +94,15 @@ describe('OLSKStringPatch', function testOLSKStringPatch() {
 		}, /OLSKErrorInputNotValid/);
 	});
 
-	// it('throws error if param2 not in param1', function() {
-	// 	assert.throws(function() {
-	// 		stringLibrary.OLSKStringPatch('', 'alfa', '');
-	// 	}, /OLSKErrorInputNotValid/);
-	// });
-
 	it('throws error if param2 in param3', function() {
 		assert.throws(function() {
 			stringLibrary.OLSKStringPatch('alfa', 'alfa', 'alfa bravo');
+		}, /OLSKErrorInputNotValid/);
+	});
+
+	it('throws error if param2 and param3 not in param1', function() {
+		assert.throws(function() {
+			stringLibrary.OLSKStringPatch('alfa', 'bravo', 'charlie');
 		}, /OLSKErrorInputNotValid/);
 	});
 
