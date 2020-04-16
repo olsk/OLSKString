@@ -17,27 +17,27 @@ describe('OLSKStringWithFormat', function test_OLSKStringWithFormat() {
 	});
 
 	it('returns inputString if param1 without formatIdentifier', function() {
-		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alpha', 'bravo'), 'alpha');
+		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alfa', 'bravo'), 'alfa');
 	});
 
 	it('returns inputString if param2 without substitutions', function() {
-		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alpha %@'), 'alpha %@');
+		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alfa %@'), 'alfa %@');
 	});
 
 	it('returns formattedString for single formatIdentifier', function() {
-		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alpha %@', 'bravo'), 'alpha bravo');
+		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alfa %@', 'bravo'), 'alfa bravo');
 	});
 
 	it('returns formattedString for multiple formatIdentifiers', function() {
-		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alpha %@ %@', 'bravo', 'charlie'), 'alpha bravo charlie');
+		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alfa %@ %@', 'bravo', 'charlie'), 'alfa bravo charlie');
 	});
 
 	it('returns formattedString for single ordered formatIdentifier', function() {
-		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alpha %$1@', 'bravo'), 'alpha bravo');
+		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alfa %$1@', 'bravo'), 'alfa bravo');
 	});
 
 	it('returns formattedString for multiple ordered formatIdentifiers', function() {
-		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alpha %$2@ %$1@', 'bravo', 'charlie'), 'alpha charlie bravo');
+		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alfa %$2@ %$1@', 'bravo', 'charlie'), 'alfa charlie bravo');
 	});
 
 });
