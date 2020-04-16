@@ -8,7 +8,7 @@ var assert = require('assert');
 
 var stringLibrary = require('./main');
 
-describe('OLSKStringWithFormat', function testOLSKStringWithFormat() {
+describe('OLSKStringWithFormat', function test_OLSKStringWithFormat() {
 
 	it('throws error if not string', function() {
 		assert.throws(function() {
@@ -42,7 +42,7 @@ describe('OLSKStringWithFormat', function testOLSKStringWithFormat() {
 
 });
 
-describe('OLSKStringReplaceTokens', function testOLSKStringReplaceTokens() {
+describe('OLSKStringReplaceTokens', function test_OLSKStringReplaceTokens() {
 
 	it('throws error if param1 not string', function() {
 		assert.throws(function() {
@@ -74,7 +74,7 @@ describe('OLSKStringReplaceTokens', function testOLSKStringReplaceTokens() {
 
 });
 
-describe('OLSKStringPatch', function testOLSKStringPatch() {
+describe('OLSKStringPatch', function test_OLSKStringPatch() {
 
 	it('throws error if param1 not string', function() {
 		assert.throws(function() {
