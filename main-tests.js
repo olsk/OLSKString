@@ -1,43 +1,37 @@
-/*!
- * OLSKString
- * Copyright(c) 2018 Rosano Coutinho
- * MIT Licensed
- */
+const { throws, deepEqual } = require('assert');
 
-var assert = require('assert');
-
-var stringLibrary = require('./main');
+const mainModule = require('./main.js');
 
 describe('OLSKStringWithFormat', function test_OLSKStringWithFormat() {
 
 	it('throws error if not string', function() {
-		assert.throws(function() {
-			stringLibrary.OLSKStringWithFormat(null);
+		throws(function() {
+			mainModule.OLSKStringWithFormat(null);
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('returns inputString if param1 without formatIdentifier', function() {
-		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alfa', 'bravo'), 'alfa');
+		deepEqual(mainModule.OLSKStringWithFormat('alfa', 'bravo'), 'alfa');
 	});
 
 	it('returns inputString if param2 without substitutions', function() {
-		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alfa %@'), 'alfa %@');
+		deepEqual(mainModule.OLSKStringWithFormat('alfa %@'), 'alfa %@');
 	});
 
 	it('returns formattedString for single formatIdentifier', function() {
-		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alfa %@', 'bravo'), 'alfa bravo');
+		deepEqual(mainModule.OLSKStringWithFormat('alfa %@', 'bravo'), 'alfa bravo');
 	});
 
 	it('returns formattedString for multiple formatIdentifiers', function() {
-		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alfa %@ %@', 'bravo', 'charlie'), 'alfa bravo charlie');
+		deepEqual(mainModule.OLSKStringWithFormat('alfa %@ %@', 'bravo', 'charlie'), 'alfa bravo charlie');
 	});
 
 	it('returns formattedString for single ordered formatIdentifier', function() {
-		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alfa %$1@', 'bravo'), 'alfa bravo');
+		deepEqual(mainModule.OLSKStringWithFormat('alfa %$1@', 'bravo'), 'alfa bravo');
 	});
 
 	it('returns formattedString for multiple ordered formatIdentifiers', function() {
-		assert.strictEqual(stringLibrary.OLSKStringWithFormat('alfa %$2@ %$1@', 'bravo', 'charlie'), 'alfa charlie bravo');
+		deepEqual(mainModule.OLSKStringWithFormat('alfa %$2@ %$1@', 'bravo', 'charlie'), 'alfa charlie bravo');
 	});
 
 });
@@ -45,29 +39,29 @@ describe('OLSKStringWithFormat', function test_OLSKStringWithFormat() {
 describe('OLSKStringReplaceTokens', function test_OLSKStringReplaceTokens() {
 
 	it('throws error if param1 not string', function() {
-		assert.throws(function() {
-			stringLibrary.OLSKStringReplaceTokens(null, {});
+		throws(function() {
+			mainModule.OLSKStringReplaceTokens(null, {});
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 not object', function() {
-		assert.throws(function() {
-			stringLibrary.OLSKStringReplaceTokens('', null);
+		throws(function() {
+			mainModule.OLSKStringReplaceTokens('', null);
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('returns inputString', function() {
-		assert.strictEqual(stringLibrary.OLSKStringReplaceTokens('', {}), '');
+		deepEqual(mainModule.OLSKStringReplaceTokens('', {}), '');
 	});
 
 	it('replaces token single', function() {
-		assert.strictEqual(stringLibrary.OLSKStringReplaceTokens('alfa', {
+		deepEqual(mainModule.OLSKStringReplaceTokens('alfa', {
 			alfa: 'bravo',
 		}), 'bravo');
 	});
 
 	it('replaces token multiple', function() {
-		assert.strictEqual(stringLibrary.OLSKStringReplaceTokens('alfa alfa', {
+		deepEqual(mainModule.OLSKStringReplaceTokens('alfa alfa', {
 			alfa: 'bravo',
 		}), 'bravo bravo');
 	});
@@ -77,51 +71,51 @@ describe('OLSKStringReplaceTokens', function test_OLSKStringReplaceTokens() {
 describe('OLSKStringPatch', function test_OLSKStringPatch() {
 
 	it('throws error if param1 not string', function() {
-		assert.throws(function() {
-			stringLibrary.OLSKStringPatch(null, '', '');
+		throws(function() {
+			mainModule.OLSKStringPatch(null, '', '');
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 not string', function() {
-		assert.throws(function() {
-			stringLibrary.OLSKStringPatch('', null, '');
+		throws(function() {
+			mainModule.OLSKStringPatch('', null, '');
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param3 not string', function() {
-		assert.throws(function() {
-			stringLibrary.OLSKStringPatch('', '', null);
+		throws(function() {
+			mainModule.OLSKStringPatch('', '', null);
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 in param3', function() {
-		assert.throws(function() {
-			stringLibrary.OLSKStringPatch('alfa', 'alfa', 'alfa bravo');
+		throws(function() {
+			mainModule.OLSKStringPatch('alfa', 'alfa', 'alfa bravo');
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 and param3 not in param1', function() {
-		assert.throws(function() {
-			stringLibrary.OLSKStringPatch('alfa', 'bravo', 'charlie');
+		throws(function() {
+			mainModule.OLSKStringPatch('alfa', 'bravo', 'charlie');
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it.skip('throws error if replaces more than once', function() {
-		assert.throws(function() {
-			stringLibrary.OLSKStringPatch('alfa', 'alfa', '// alfa');
+		throws(function() {
+			mainModule.OLSKStringPatch('alfa', 'alfa', '// alfa');
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('returns string', function() {
-		assert.strictEqual(stringLibrary.OLSKStringPatch('alfa', 'alfa', 'bravo'), 'bravo');
+		deepEqual(mainModule.OLSKStringPatch('alfa', 'alfa', 'bravo'), 'bravo');
 	});
 
 	it('replaces single', function() {
-		assert.strictEqual(stringLibrary.OLSKStringPatch('alfa bravo', 'bravo', 'charlie'), 'alfa charlie');
+		deepEqual(mainModule.OLSKStringPatch('alfa bravo', 'bravo', 'charlie'), 'alfa charlie');
 	});
 
 	it('replaces multiple', function() {
-		assert.strictEqual(stringLibrary.OLSKStringPatch('alfa bravo bravo', 'bravo', 'charlie'), 'alfa charlie charlie');
+		deepEqual(mainModule.OLSKStringPatch('alfa bravo bravo', 'bravo', 'charlie'), 'alfa charlie charlie');
 	});
 
 });
