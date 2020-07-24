@@ -82,6 +82,19 @@
 			return param1.split(param2).join(param3);
 		},
 
+		OLSKStringMatch (param1, param2) {
+			if (typeof param1 !== 'string') {
+				throw new Error('OLSKErrorInputNotValid');
+			}
+
+			if (typeof param2 !== 'string') {
+				throw new Error('OLSKErrorInputNotValid');
+			}
+
+			// Searching and sorting text with diacritical marks in JavaScript | Thread Engineering https://thread.engineering/2018-08-29-searching-and-sorting-text-with-diacritical-marks-in-javascript/
+			return param2.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(param1.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''));
+		},
+
 	};
 
 	Object.assign(exports, mod);
