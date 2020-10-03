@@ -95,6 +95,14 @@
 			return param2.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(param1.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''));
 		},
 
+		OLSKStringSnippet (inputData) {
+			if (typeof inputData !== 'string') {
+				throw new Error('KVCErrorInputNotValid');
+			}
+
+			return inputData.length <= 100 ? inputData : inputData.slice(0, 100).split(' ').slice(0, -1).join(' ').concat('…');
+		},
+
 	};
 
 	Object.assign(exports, mod);
