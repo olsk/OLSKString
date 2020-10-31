@@ -23,7 +23,7 @@
 				formattedString = formattedString.replace(e, substitutions[i]);
 			});
 
-			exports._OLSKStringAllMatchesWithRegexAndString(/%\$(\d*)@/g, inputData).forEach(function(e) {
+			mod._OLSKStringAllMatchesWithRegexAndString(/%\$(\d*)@/g, inputData).forEach(function(e) {
 				formattedString = formattedString.replace(e[0], substitutions[e[1] - 1]);
 			});
 
