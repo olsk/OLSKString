@@ -1,37 +1,37 @@
 const { throws, deepEqual } = require('assert');
 
-const mainModule = require('./main.js');
+const mod = require('./main.js');
 
 describe('OLSKStringWithFormat', function test_OLSKStringWithFormat() {
 
 	it('throws error if not string', function() {
 		throws(function() {
-			mainModule.OLSKStringWithFormat(null);
+			mod.OLSKStringWithFormat(null);
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('returns inputString if param1 without formatIdentifier', function() {
-		deepEqual(mainModule.OLSKStringWithFormat('alfa', 'bravo'), 'alfa');
+		deepEqual(mod.OLSKStringWithFormat('alfa', 'bravo'), 'alfa');
 	});
 
 	it('returns inputString if param2 without substitutions', function() {
-		deepEqual(mainModule.OLSKStringWithFormat('alfa %@'), 'alfa %@');
+		deepEqual(mod.OLSKStringWithFormat('alfa %@'), 'alfa %@');
 	});
 
 	it('returns formattedString for single formatIdentifier', function() {
-		deepEqual(mainModule.OLSKStringWithFormat('alfa %@', 'bravo'), 'alfa bravo');
+		deepEqual(mod.OLSKStringWithFormat('alfa %@', 'bravo'), 'alfa bravo');
 	});
 
 	it('returns formattedString for multiple formatIdentifiers', function() {
-		deepEqual(mainModule.OLSKStringWithFormat('alfa %@ %@', 'bravo', 'charlie'), 'alfa bravo charlie');
+		deepEqual(mod.OLSKStringWithFormat('alfa %@ %@', 'bravo', 'charlie'), 'alfa bravo charlie');
 	});
 
 	it('returns formattedString for single ordered formatIdentifier', function() {
-		deepEqual(mainModule.OLSKStringWithFormat('alfa %$1@', 'bravo'), 'alfa bravo');
+		deepEqual(mod.OLSKStringWithFormat('alfa %$1@', 'bravo'), 'alfa bravo');
 	});
 
 	it('returns formattedString for multiple ordered formatIdentifiers', function() {
-		deepEqual(mainModule.OLSKStringWithFormat('alfa %$2@ %$1@', 'bravo', 'charlie'), 'alfa charlie bravo');
+		deepEqual(mod.OLSKStringWithFormat('alfa %$2@ %$1@', 'bravo', 'charlie'), 'alfa charlie bravo');
 	});
 
 });
@@ -40,28 +40,28 @@ describe('OLSKStringReplaceTokens', function test_OLSKStringReplaceTokens() {
 
 	it('throws error if param1 not string', function() {
 		throws(function() {
-			mainModule.OLSKStringReplaceTokens(null, {});
+			mod.OLSKStringReplaceTokens(null, {});
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 not object', function() {
 		throws(function() {
-			mainModule.OLSKStringReplaceTokens('', null);
+			mod.OLSKStringReplaceTokens('', null);
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('returns inputString', function() {
-		deepEqual(mainModule.OLSKStringReplaceTokens('', {}), '');
+		deepEqual(mod.OLSKStringReplaceTokens('', {}), '');
 	});
 
 	it('replaces token single', function() {
-		deepEqual(mainModule.OLSKStringReplaceTokens('alfa', {
+		deepEqual(mod.OLSKStringReplaceTokens('alfa', {
 			alfa: 'bravo',
 		}), 'bravo');
 	});
 
 	it('replaces token multiple', function() {
-		deepEqual(mainModule.OLSKStringReplaceTokens('alfa alfa', {
+		deepEqual(mod.OLSKStringReplaceTokens('alfa alfa', {
 			alfa: 'bravo',
 		}), 'bravo bravo');
 	});
@@ -72,50 +72,50 @@ describe('OLSKStringPatch', function test_OLSKStringPatch() {
 
 	it('throws error if param1 not string', function() {
 		throws(function() {
-			mainModule.OLSKStringPatch(null, '', '');
+			mod.OLSKStringPatch(null, '', '');
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 not string', function() {
 		throws(function() {
-			mainModule.OLSKStringPatch('', null, '');
+			mod.OLSKStringPatch('', null, '');
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param3 not string', function() {
 		throws(function() {
-			mainModule.OLSKStringPatch('', '', null);
+			mod.OLSKStringPatch('', '', null);
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 in param3', function() {
 		throws(function() {
-			mainModule.OLSKStringPatch('alfa', 'alfa', 'alfa bravo');
+			mod.OLSKStringPatch('alfa', 'alfa', 'alfa bravo');
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 and param3 not in param1', function() {
 		throws(function() {
-			mainModule.OLSKStringPatch('alfa', 'bravo', 'charlie');
+			mod.OLSKStringPatch('alfa', 'bravo', 'charlie');
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it.skip('throws error if replaces more than once', function() {
 		throws(function() {
-			mainModule.OLSKStringPatch('alfa', 'alfa', '// alfa');
+			mod.OLSKStringPatch('alfa', 'alfa', '// alfa');
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('returns string', function() {
-		deepEqual(mainModule.OLSKStringPatch('alfa', 'alfa', 'bravo'), 'bravo');
+		deepEqual(mod.OLSKStringPatch('alfa', 'alfa', 'bravo'), 'bravo');
 	});
 
 	it('replaces single', function() {
-		deepEqual(mainModule.OLSKStringPatch('alfa bravo', 'bravo', 'charlie'), 'alfa charlie');
+		deepEqual(mod.OLSKStringPatch('alfa bravo', 'bravo', 'charlie'), 'alfa charlie');
 	});
 
 	it('replaces multiple', function() {
-		deepEqual(mainModule.OLSKStringPatch('alfa bravo bravo', 'bravo', 'charlie'), 'alfa charlie charlie');
+		deepEqual(mod.OLSKStringPatch('alfa bravo bravo', 'bravo', 'charlie'), 'alfa charlie charlie');
 	});
 
 });
@@ -124,34 +124,34 @@ describe('OLSKStringMatch', function test_OLSKStringMatch() {
 
 	it('throws error if param1 not string', function() {
 		throws(function() {
-			mainModule.OLSKStringMatch(null, '');
+			mod.OLSKStringMatch(null, '');
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 not string', function() {
 		throws(function() {
-			mainModule.OLSKStringMatch('', null);
+			mod.OLSKStringMatch('', null);
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('returns false if no match', function () {
-		deepEqual(mainModule.OLSKStringMatch('bravo', 'alfa'), false);
+		deepEqual(mod.OLSKStringMatch('bravo', 'alfa'), false);
 	});
 
 	it('returns true if exact', function () {
-		deepEqual(mainModule.OLSKStringMatch('alfa', 'alfa'), true);
+		deepEqual(mod.OLSKStringMatch('alfa', 'alfa'), true);
 	});
 
 	it('returns true if partial', function () {
-		deepEqual(mainModule.OLSKStringMatch('alf', 'alfa'), true);
+		deepEqual(mod.OLSKStringMatch('alf', 'alfa'), true);
 	});
 
 	it('matches case insensitive', function () {
-		deepEqual(mainModule.OLSKStringMatch('alf', 'ALF'), true);
+		deepEqual(mod.OLSKStringMatch('alf', 'ALF'), true);
 	});
 
 	it('matches diacritic insensitive', function () {
-		deepEqual(mainModule.OLSKStringMatch('alf', 'álfa'), true);
+		deepEqual(mod.OLSKStringMatch('alf', 'álfa'), true);
 	});
 
 });
@@ -160,17 +160,17 @@ describe('OLSKStringSnippet', function test_OLSKStringSnippet() {
 
 	it('throws error if not string', function() {
 		throws(function() {
-			mainModule.OLSKStringSnippet(null);
+			mod.OLSKStringSnippet(null);
 		}, /KVCErrorInputNotValid/);
 	});
 
 	it('returns subset if large', function() {
 		const item = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.';
-		deepEqual(mainModule.OLSKStringSnippet(item), item.slice(0, 100).split(' ').slice(0, -1).join(' ') + '…');
+		deepEqual(mod.OLSKStringSnippet(item), item.slice(0, 100).split(' ').slice(0, -1).join(' ') + '…');
 	});
 
 	it('returns all if small', function() {
-		deepEqual(mainModule.OLSKStringSnippet('alfa bravo'), 'alfa bravo');
+		deepEqual(mod.OLSKStringSnippet('alfa bravo'), 'alfa bravo');
 	});
 
 });
