@@ -23,14 +23,14 @@
 				formattedString = formattedString.replace(e, substitutions[i]);
 			});
 
-			mod._OLSKStringAllMatchesWithRegexAndString(/%\$(\d*)@/g, inputData).forEach(function(e) {
+			mod._OLSKStringAllMatches(/%\$(\d*)@/g, inputData).forEach(function(e) {
 				formattedString = formattedString.replace(e[0], substitutions[e[1] - 1]);
 			});
 
 			return formattedString;
 		},
 
-		_OLSKStringAllMatchesWithRegexAndString (regex, string) {
+		_OLSKStringAllMatches (regex, string) {
 			var matches = [];
 
 			var match = regex.exec(string);
