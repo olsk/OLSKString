@@ -6,7 +6,7 @@
 
 	const mod = {
 
-		OLSKStringWithFormat (inputData) {
+		OLSKStringFormatted (inputData) {
 			if (typeof inputData !== 'string') {
 				throw new Error('OLSKErrorInputNotValid');
 			}

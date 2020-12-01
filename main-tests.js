@@ -2,36 +2,36 @@ const { throws, deepEqual } = require('assert');
 
 const mod = require('./main.js');
 
-describe('OLSKStringWithFormat', function test_OLSKStringWithFormat() {
+describe('OLSKStringFormatted', function test_OLSKStringFormatted() {
 
 	it('throws error if not string', function() {
 		throws(function() {
-			mod.OLSKStringWithFormat(null);
+			mod.OLSKStringFormatted(null);
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('returns inputString if param1 without formatIdentifier', function() {
-		deepEqual(mod.OLSKStringWithFormat('alfa', 'bravo'), 'alfa');
+		deepEqual(mod.OLSKStringFormatted('alfa', 'bravo'), 'alfa');
 	});
 
 	it('returns inputString if param2 without substitutions', function() {
-		deepEqual(mod.OLSKStringWithFormat('alfa %@'), 'alfa %@');
+		deepEqual(mod.OLSKStringFormatted('alfa %@'), 'alfa %@');
 	});
 
 	it('returns formattedString for single formatIdentifier', function() {
-		deepEqual(mod.OLSKStringWithFormat('alfa %@', 'bravo'), 'alfa bravo');
+		deepEqual(mod.OLSKStringFormatted('alfa %@', 'bravo'), 'alfa bravo');
 	});
 
 	it('returns formattedString for multiple formatIdentifiers', function() {
-		deepEqual(mod.OLSKStringWithFormat('alfa %@ %@', 'bravo', 'charlie'), 'alfa bravo charlie');
+		deepEqual(mod.OLSKStringFormatted('alfa %@ %@', 'bravo', 'charlie'), 'alfa bravo charlie');
 	});
 
 	it('returns formattedString for single ordered formatIdentifier', function() {
-		deepEqual(mod.OLSKStringWithFormat('alfa %$1@', 'bravo'), 'alfa bravo');
+		deepEqual(mod.OLSKStringFormatted('alfa %$1@', 'bravo'), 'alfa bravo');
 	});
 
 	it('returns formattedString for multiple ordered formatIdentifiers', function() {
-		deepEqual(mod.OLSKStringWithFormat('alfa %$2@ %$1@', 'bravo', 'charlie'), 'alfa charlie bravo');
+		deepEqual(mod.OLSKStringFormatted('alfa %$2@ %$1@', 'bravo', 'charlie'), 'alfa charlie bravo');
 	});
 
 });
