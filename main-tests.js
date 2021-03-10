@@ -156,6 +156,12 @@ describe('OLSKStringMatch', function test_OLSKStringMatch() {
 		deepEqual(mod.OLSKStringMatch('alf', 'álfa'), true);
 	});
 
+	it('throws error if param3 not string', function() {
+		throws(function() {
+			mod.OLSKStringMatch(Math.random().toString(), Math.random().toString(), null);
+		}, /OLSKErrorInputNotValid/);
+	});
+
 });
 
 describe('OLSKStringSnippet', function test_OLSKStringSnippet() {
