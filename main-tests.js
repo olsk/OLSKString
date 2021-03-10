@@ -124,26 +124,28 @@ describe('OLSKStringMatch', function test_OLSKStringMatch() {
 
 	it('throws error if param1 not string', function() {
 		throws(function() {
-			mod.OLSKStringMatch(null, '');
+			mod.OLSKStringMatch(null, Math.random().toString());
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('throws error if param2 not string', function() {
 		throws(function() {
-			mod.OLSKStringMatch('', null);
+			mod.OLSKStringMatch(Math.random().toString(), null);
 		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('returns false if no match', function () {
-		deepEqual(mod.OLSKStringMatch('bravo', 'alfa'), false);
+		deepEqual(mod.OLSKStringMatch(Math.random().toString(), Math.random().toString()), false);
 	});
 
-	it('returns true if exact', function () {
-		deepEqual(mod.OLSKStringMatch('alfa', 'alfa'), true);
+	it('matches exact', function () {
+		const item = Math.random().toString();
+		deepEqual(mod.OLSKStringMatch(item, item), true);
 	});
 
-	it('returns true if partial', function () {
-		deepEqual(mod.OLSKStringMatch('alf', 'alfa'), true);
+	it('matches partial', function () {
+		const item = Math.random().toString();
+		deepEqual(mod.OLSKStringMatch(item.slice(0, 5), item), true);
 	});
 
 	it('matches case insensitive', function () {
