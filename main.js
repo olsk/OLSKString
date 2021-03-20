@@ -118,3 +118,7 @@
 	});
 
 })));
+
+if (typeof exports === 'object') {
+	exports.OLSKFormatted = exports.OLSKStringFormatted;
+}
