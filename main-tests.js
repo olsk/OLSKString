@@ -169,7 +169,7 @@ describe('OLSKStringSnippet', function test_OLSKStringSnippet() {
 	it('throws error if not string', function() {
 		throws(function() {
 			mod.OLSKStringSnippet(null);
-		}, /KVCErrorInputNotValid/);
+		}, /OLSKErrorInputNotValid/);
 	});
 
 	it('returns subset if large', function() {
