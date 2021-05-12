@@ -109,6 +109,17 @@
 			return inputData.length <= 100 ? inputData : inputData.slice(0, 100).split(' ').slice(0, -1).join(' ').concat('…');
 		},
 
+		OLSKStringEncode (inputData) {
+			if (typeof inputData !== 'string') {
+				throw new Error('OLSKErrorInputNotValid');
+			}
+
+			return mod.OLSKStringReplaceTokens(encodeURIComponent(inputData), {
+				'\\(': '%28',
+				'\\)': '%29',
+			});
+		},
+
 	};
 
 	Object.assign(exports, mod);

@@ -182,3 +182,34 @@ describe('OLSKStringSnippet', function test_OLSKStringSnippet() {
 	});
 
 });
+
+
+describe('OLSKStringEncode', function test_OLSKStringEncode() {
+
+	it('throws error if not string', function() {
+		throws(function() {
+			mod.OLSKStringEncode(null);
+		}, /OLSKErrorInputNotValid/);
+	});
+
+	it('returns string', function() {
+		const item = Math.random().toString();
+		deepEqual(mod.OLSKStringEncode(item), item);
+	});
+
+	it('encodes url', function() {
+		const item = uLink();
+		deepEqual(mod.OLSKStringEncode(item), encodeURIComponent(item));
+	});
+
+	it('encodes brackets', function() {
+		const item = JSON.stringify({
+			alfa: '(bravo)',
+		});
+		deepEqual(mod.OLSKStringEncode(item), mod.OLSKStringReplaceTokens(encodeURIComponent(item), {
+			'\\(': '%28',
+			'\\)': '%29',
+		}));
+	});
+
+});
