@@ -72,6 +72,7 @@
 			}
 
 			if (!param1.includes(param2) && !param1.includes(param3)) {
+				console.error(`source includes neither of "${ param2 }" or "${ param3 }"`);
 				throw new Error('OLSKErrorInputNotValid');
 			}
 
